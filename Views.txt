@@ -1,0 +1,246 @@
+﻿---------------------------------------------------------------------------------------------------------------------
+
+
+SQL> SELECT * FROM GUEST;
+
+
+SNO                                              NAME                                                      AGE  
+-------------------------------------------------- -------------------------------------------------- 
+1012                                             RAM                                                        21 
+1045                                             SAM                                                        20 
+1007                                             TOM                                                        23 
+1234                                             ARAV                                                      19
+2589                                             SAMEER                                                 21
+2028                                             SAMEER                                                 24 
+4529                                             TOM                                                        23
+
+
+7 rows selected.
+
+
+SQL> SELECT * FROM DAY;
+
+
+SNO        NAME                 DAY
+---------- -------------------- -
+1045     SAM                  1
+4529     TOM                  2
+7803     HARRY             3
+1012     RAM                  4
+
+
+SQL> CREATE VIEW DISPLAYVIEW AS SELECT NAME,AGE FROM GUEST;
+
+
+View created.
+
+
+SQL> SELECT * FROM DISPLAYVIEW;
+
+
+NAME                                                      AGE
+-------------------------------------------------- ----------
+RAM                                                        21
+SAM                                                        20
+TOM                                                        23
+ARAV                                                       19
+SAMEER                                                     21
+SAMEER                                                     24
+TOM                                                        23
+
+
+7 rows selected.
+
+
+SQL> INSERT INTO DISPLAYVIEW VALUES('HARRY',20);
+INSERT INTO DISPLAYVIEW VALUES('HARRY',20)
+*
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("633"."DAY"."NIGHTS")
+
+
+
+
+SQL> INSERT INTO DISPLAYVIEW VALUES('818','HARRY',20);
+INSERT INTO DISPLAYVIEW VALUES('RA1818','HARRY',20)
+            *
+ERROR at line 1:
+ORA-00913: too many values
+
+
+
+
+SQL> CREATE VIEW DISPLAYVIEW1 AS SELECT SNO,NAME,AGE FROM GUEST;
+
+
+View created.
+
+
+SQL> SELECT * FROM DISPLAYVIEW1;
+
+
+REGNO                                              NAME                                                      AGE
+-------------------------------------------------- -------------------------------------------------- ----------
+1012                                             RAM                                                        21
+1045                                             SAM                                                        20
+1007                                             TOM                                                        23
+1234                                             ARAV                                                       19
+2589                                             SAMEER                                                     21
+2028                                             SAMEER                                                     24
+4529                                             TOM                                                        23
+
+
+7 rows selected.
+
+
+SQL> INSERT INTO DISPLAYVIEW1 VALUES('818','HARRY',20);
+
+
+1 row created.
+
+
+SQL> SELECT * FROM DISPLAYVIEW1;
+
+
+REGNO                                              NAME                                                      AGE
+-------------------------------------------------- -------------------------------------------------- ----------
+1012                                             RAM                                                        21
+1045                                             SAM                                                        20
+1007                                             TOM                                                        23
+1234                                             ARAV                                                       19
+2589                                             SAMEER                                                     21
+2028                                             SAMEER                                                     24
+4529                                             TOM                                                        23
+1818                                             HARRY                                                      20
+
+
+8 rows selected.
+
+
+SQL> SELECT * FROM GUEST;
+
+
+REGNO                                              NAME                                                      AGE 
+-------------------------------------------------- -------------------------------------------------- ---------- ------------------------------
+1012                                             RAM                                                        21 
+1045                                             SAM                                                        20 
+1007                                             TOM                                                        23 
+1234                                             ARAV                                                       19 
+2589                                             SAMEER                                                     21 
+2028                                             SAMEER                                                     24 
+4529                                             TOM                                                        23 
+1818                                             HARRY                                                      20
+
+
+8 rows selected.
+
+
+SQL> ALTER TABLE MARK ADD PRIMARY KEY(SNO);
+
+
+Table altered.
+
+
+SQL> CREATE VIEW DISPLAYGRADE2 AS SELECT GUEST.SNO,GUEST.NAME,GUEST.AGE, FROM GUEST;
+
+
+View created.
+
+
+SQL> SELECT * FROM DISPLAYGRADE2;
+
+
+REGNO                                              NAME                                                      AGE G
+-------------------------------------------------- -------------------------------------------------- ---------- -
+RA1012                                             RAM                                                        21 B
+RA1045                                             SAM                                                        20 A
+RA4529                                             TOM                                                        23 D
+
+
+SQL> INSERT INTO DISPLAYGRADE VALUES('RA6074','RITESH',25,'B');
+INSERT INTO DISPLAYGRADE VALUES('RA6074','RITESH',25,'B')
+            *
+ERROR at line 1:
+ORA-00913: too many values
+
+
+
+
+SQL> INSERT INTO DISPLAYGRADE2 VALUES('RA6074','RITESH',25,'B');
+INSERT INTO DISPLAYGRADE2 VALUES('RA6074','RITESH',25,'B')
+*
+ERROR at line 1:
+ORA-01776: cannot modify more than one base table through a join view
+
+
+
+
+SQL> DROP VIEW DISPLAYVIEW1;
+
+
+View dropped.
+
+
+SQL> SELECT * FROM CSE;
+
+
+REGNO                                              NAME                                                      AGE DEPT
+-------------------------------------------------- -------------------------------------------------- ---------- ------------------------------
+RA1012                                             RAM                                                        21 CSE
+RA1045                                             SAM                                                        20 CSE
+RA1007                                             TOM                                                        23 CSE
+RA1234                                             ARAV                                                       19 CSE
+RA2589                                             SAMEER                                                     21 CSE
+RA2028                                             SAMEER                                                     24 CSE
+RA4529                                             TOM                                                        23 CSE
+RA1818                                             HARRY                                                      20
+
+
+8 rows selected.
+
+
+SQL> create view cseview4 as select regno,name,age from cse where age<23 with check option;
+
+
+View created.
+
+
+SQL> SELECT * FROM CSEVIEW4;
+
+
+REGNO                                              NAME                                                      AGE
+-------------------------------------------------- -------------------------------------------------- ----------
+RA1012                                             RAM                                                        21
+RA1045                                             SAM                                                        20
+RA1234                                             ARAV                                                       19
+RA2589                                             SAMEER                                                     21
+RA1818                                             HARRY                                                      20
+
+
+SQL> INSERT INTO CSEVIEW4 VALUES('RA7234','PIYUSH',22);
+
+
+1 row created.
+
+
+SQL> SELECT * FROM CSEVIEW4;
+
+
+REGNO                                              NAME                                                      AGE
+-------------------------------------------------- -------------------------------------------------- ----------
+RA1012                                             RAM                                                        21
+RA1045                                             SAM                                                        20
+RA1234                                             ARAV                                                       19
+RA2589                                             SAMEER                                                     21
+RA1818                                             HARRY                                                      20
+RA7234                                             PIYUSH                                                     22
+
+
+6 rows selected.
+
+
+SQL> INSERT INTO CSEVIEW4 VALUES('RA1764','MAYANK',24);
+INSERT INTO CSEVIEW4 VALUES('RA1764','MAYANK',24)
+            *
+ERROR at line 1:
+ORA-01402: view WITH CHECK OPTION where-clause violation

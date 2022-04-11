@@ -1,0 +1,209 @@
+﻿SQL> CREATE TABLE Rooms(
+  2  roomNum:NUMBER,
+  3  bedNum:NUMBER,
+  4  floor:NUMBER);
+roomNum:NUMBER,
+       *
+ERROR at line 2:
+ORA-00902: invalid datatype 
+
+
+
+
+SQL> CREATE TABLE Rooms(roomnum:NUMBER,bedname:NUMBER,floor:NUMBER);
+CREATE TABLE Rooms(roomnum:NUMBER,bedname:NUMBER,floor:NUMBER)
+                          *
+ERROR at line 1:
+ORA-00902: invalid datatype 
+
+
+
+
+SQL> CREATE TABLE Rooms(roomnum:NUMBER,bedname:NUMBER,floor:NUMBER);
+CREATE TABLE Rooms(roomnum:NUMBER,bedname:NUMBER,floor:NUMBER)
+                          *
+ERROR at line 1:
+ORA-00902: invalid datatype 
+
+
+
+
+SQL> CREATE TABLE Rooms(roomnum:NUMBER,bedname:NUMBER,floor:NUMBER);
+CREATE TABLE Rooms(roomnum:NUMBER,bedname:NUMBER,floor:NUMBER)
+                          *
+ERROR at line 1:
+ORA-00902: invalid datatype 
+
+
+
+
+SQL> CREATE TABLE rooms(
+  2  roomno NUMBER,
+  3  roomno NUMBER,
+  4  floor NUMBER);
+roomno NUMBER,
+*
+ERROR at line 3:
+ORA-00957: duplicate column name 
+
+
+
+
+SQL> CREATE TABLE rooms(
+  2  roomno NUMBER,
+  3  bedno NUMBER,
+  4  floor NUMBER);
+
+
+Table created.
+
+
+SQL> Select *from rooms
+  2  Select *FROM rooms
+  3  
+SQL> Select *FROM rooms
+  2  Select *FROM rooms
+  3  
+SQL> SELECT *FROM rooms
+  2  DESC rooms
+  3  DESC rooms;
+DESC rooms
+*
+ERROR at line 2:
+ORA-00933: SQL command not properly ended 
+
+
+
+
+SQL> DESC rooms;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ROOMNO                                             NUMBER
+ BEDNO                                              NUMBER
+ FLOOR                                              NUMBER
+
+
+SQL> INSERT INTO rooms(5,5,5);
+INSERT INTO rooms(5,5,5)
+                  *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+
+
+SQL> INSERT INTO rooms VALUES(5,5,5);
+
+
+1 row created.
+
+
+SQL> DESC rooms;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ROOMNO                                             NUMBER
+ BEDNO                                              NUMBER
+ FLOOR                                              NUMBER
+
+
+SQL> SELECT *FROM rooms
+  2  Select *from rooms
+  3  
+SQL> DESC Rooms;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ROOMNO                                             NUMBER
+ BEDNO                                              NUMBER
+ FLOOR                                              NUMBER
+
+
+SQL> DESC rooms;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ROOMNO                                             NUMBER
+ BEDNO                                              NUMBER
+ FLOOR                                              NUMBER
+
+
+SQL> SELECR *FROM rooms;
+SP2-0734: unknown command beginning "SELECR *FR..." - rest of line ignored.
+SQL> SELECT *FROM rooms;
+
+
+    ROOMNO      BEDNO      FLOOR                                                
+---------- ---------- ----------                                                
+         5          5          5                                                
+
+
+SQL> ALTER TABLE rooms ADD washroom NUMBER;
+
+
+Table altered.
+
+
+SQL> DESC rooms;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ROOMNO                                             NUMBER
+ BEDNO                                              NUMBER
+ FLOOR                                              NUMBER
+ WASHROOM                                           NUMBER
+
+
+SQL> ALTER TABLE rooms DROP(washroom);
+
+
+Table altered.
+
+
+SQL> DESC rooms;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ROOMNO                                             NUMBER
+ BEDNO                                              NUMBER
+ FLOOR                                              NUMBER
+
+
+SQL> INSERT INTO rooms VALUES(6,6,6);
+
+
+1 row created.
+
+
+SQL> SELECT *FROM rooms;
+
+
+    ROOMNO      BEDNO      FLOOR                                                
+---------- ---------- ----------                                                
+         5          5          5                                                
+         6          6          6                                                
+
+
+SQL> SELECT roomno FROM rooms;
+
+
+    ROOMNO                                                                      
+----------                                                                      
+         5                                                                      
+         6                                                                      
+
+
+SQL> SELECT bedno FROM rooms;
+
+
+     BEDNO                                                                      
+----------                                                                      
+         5                                                                      
+         6                                                                      
+
+
+SQL> SELECT floor FROM rooms;
+
+
+     FLOOR                                                                      
+----------                                                                      
+         5                                                                      
+         6                                                                      
+
+
+SQL> Spool off

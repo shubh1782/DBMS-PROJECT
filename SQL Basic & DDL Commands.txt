@@ -1,0 +1,119 @@
+﻿SQL> CREATE TABLE emp(
+  2  
+SQL> CREATE TABLE emp(empno NUMBER,empname VARCHAR2(255),DOB DATE, salary NUMBER,designation VARCHAR2(20));
+
+
+Table created.
+
+
+
+
+SQL> INSERT INTO emp VALUES(100,'John',TO_DATE('21-4-1994','DD-MM-YYYY'),50000,'Manager');
+
+
+1 row created.
+
+
+SQL> INSERT INTO emp VALUES(101,'Greg',TO_DATE('2-6-1994','DD-MM-YYYY'),25000,'Clerk');
+
+
+1 row created.
+
+
+SQL> SELECT * FROM emp;
+
+
+     EMPNO                                                                      
+----------                                                                      
+EMPNAME                                                                         
+--------------------------------------------------------------------------------
+DOB           SALARY DESIGNATION                                                
+--------- ---------- --------------------                                       
+       100                                                                      
+John                                                                            
+21-APR-94      50000 Manager                                                    
+                                                                                
+       101                                                                      
+Greg                                                                            
+02-JUN-94      25000 Clerk                                                      
+
+
+     EMPNO                                                                      
+----------                                                                      
+EMPNAME                                                                         
+--------------------------------------------------------------------------------
+DOB           SALARY DESIGNATION                                                
+--------- ---------- --------------------                                       
+                                                                                
+
+
+SQL> SELECT empname ,salary FROM emp;
+
+
+EMPNAME                                                                         
+--------------------------------------------------------------------------------
+    SALARY                                                                      
+----------                                                                      
+John                                                                            
+     50000                                                                      
+                                                                                
+Greg                                                                            
+     25000                                                                      
+                                                                                
+
+
+SQL> UPDATE emp SET salary=salary+1000;
+
+
+2 rows updated.
+
+
+SQL> SELECT * FROM emp;
+
+
+     EMPNO                                                                      
+----------                                                                      
+EMPNAME                                                                         
+--------------------------------------------------------------------------------
+DOB           SALARY DESIGNATION                                                
+--------- ---------- --------------------                                       
+       100                                                                      
+John                                                                            
+21-APR-94      51000 Manager                                                    
+                                                                                
+       101                                                                      
+Greg                                                                            
+02-JUN-94      26000 Clerk                                                      
+
+
+     EMPNO                                                                      
+----------                                                                      
+EMPNAME                                                                         
+--------------------------------------------------------------------------------
+DOB           SALARY DESIGNATION                                                
+--------- ---------- --------------------                                       
+                                                                                
+
+
+SQL> DELETE FROM emp WHERE empno=100;
+
+
+1 row deleted.
+
+
+SQL> SELECT * FROM emp;
+
+
+     EMPNO                                                                      
+----------                                                                      
+EMPNAME                                                                         
+--------------------------------------------------------------------------------
+DOB           SALARY DESIGNATION                                                
+--------- ---------- --------------------                                       
+       101                                                                      
+Greg                                                                            
+02-JUN-94      26000 Clerk                                                      
+                                                                                
+
+
+SQL> Spool off
